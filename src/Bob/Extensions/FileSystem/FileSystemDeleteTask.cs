@@ -1,5 +1,6 @@
-﻿using Bob.Core;
-using System;
+﻿using System;
+
+using Bob.Core;
 
 namespace Bob.Extensions.FileSystem
 {
@@ -12,12 +13,12 @@ namespace Bob.Extensions.FileSystem
             this.parameters = parameters;
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
-            this.Execute(this.parameters());
+            return this.Execute(this.parameters());
         }
 
-        private void Execute(FileSystemDeleteParameters data)
+        private TaskResult Execute(FileSystemDeleteParameters data)
         {
             if (data.Files != null)
             {
@@ -34,6 +35,8 @@ namespace Bob.Extensions.FileSystem
                     Container.Storage.DeleteDirectory(path);
                 }
             }
+
+            return TaskResult.Successful;
         }
     }
 }

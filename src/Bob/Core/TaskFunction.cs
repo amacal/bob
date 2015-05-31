@@ -41,9 +41,9 @@ namespace Bob.Core
             get { return this.name; }
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
-            this.factory.Invoke().Execute();
+            return this.factory.Invoke().Execute();
         }
     }
 }

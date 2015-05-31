@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 using Bob;
 
-public class Sample : IBob
+public class Build : IBob
 {
     private ITask Restore()
     {
@@ -30,6 +30,7 @@ public class Sample : IBob
         return NUnit.Execute(parameters =>
         {
             parameters.Assemblies = FileSystem.Files.Match("build\\output\\*.Tests*dll");
+            parameters.XmlResult = FileSystem.Files.Relative("build\\nunit.xml");
         });
     }
 

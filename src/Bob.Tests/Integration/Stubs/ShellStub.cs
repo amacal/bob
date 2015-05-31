@@ -16,9 +16,10 @@ namespace Bob.Tests.Integration.Stubs
             this.executed = new List<ProcessStartInfo>();
         }
 
-        public void Start(ProcessStartInfo info)
+        public int Start(ProcessStartInfo info)
         {
             this.executed.Add(info);
+            return 0;
         }
 
         public bool Any(Func<ProcessStartInfo, bool> predicate)

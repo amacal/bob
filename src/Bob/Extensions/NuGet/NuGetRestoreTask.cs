@@ -16,12 +16,12 @@ namespace Bob.Extensions.NuGet
             this.parameters = parameters;
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
-            this.Execute(this.parameters());
+            return this.Execute(this.parameters());
         }
 
-        private void Execute(NuGetRestoreParameters data)
+        private TaskResult Execute(NuGetRestoreParameters data)
         {
             StringBuilder arguments = new StringBuilder("restore ");
             string tool = data.Path.Resolve();
@@ -39,7 +39,12 @@ namespace Bob.Extensions.NuGet
                 Arguments = arguments.ToString().TrimEnd()
             };
 
-            Container.Shell.Start(info);
+            if (Container.Shell.Start(info) != 0)
+            {
+                return TaskResult.Unsuccessful;
+            }
+
+            return TaskResult.Successful;
         }
     }
 }

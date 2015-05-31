@@ -4,6 +4,6 @@ namespace Bob.Core
 {
     public interface IShell
     {
-        void Start(ProcessStartInfo info);
+        int Start(ProcessStartInfo info);
     }
 }

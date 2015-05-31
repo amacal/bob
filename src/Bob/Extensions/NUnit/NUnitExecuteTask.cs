@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 using Bob.Core;
@@ -15,15 +16,22 @@ namespace Bob.Extensions.NUnit
             this.parameters = parameters;
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
-            this.Execute(this.parameters());
+            return this.Execute(this.parameters());
         }
 
-        private void Execute(NUnitExecuteParameters data)
+        private TaskResult Execute(NUnitExecuteParameters data)
         {
             StringBuilder arguments = new StringBuilder();
             string tool = data.Path.Resolve();
+
+            if (data.XmlResult != null)
+            {
+                arguments.Append("/xml:");
+                arguments.Append(data.XmlResult.Execute().Single().Quote());
+                arguments.Append(" ");
+            }
 
             foreach (string assembly in data.Assemblies.Execute())
             {
@@ -38,7 +46,12 @@ namespace Bob.Extensions.NUnit
                 Arguments = arguments.ToString().TrimEnd()
             };
 
-            Container.Shell.Start(info);
+            if (Container.Shell.Start(info) != 0)
+            {
+                return TaskResult.Unsuccessful;
+            }
+
+            return TaskResult.Successful;
         }
     }
 }

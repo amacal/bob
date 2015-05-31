@@ -13,17 +13,19 @@ namespace Bob.Extensions.FileSystem
             this.parameters = parameters;
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
-            this.Execute(this.parameters());
+            return this.Execute(this.parameters());
         }
 
-        private void Execute(FileSystemNewDirectoryParameters data)
+        private TaskResult Execute(FileSystemNewDirectoryParameters data)
         {
             foreach (string path in data.Path.Execute())
             {
                 Container.Storage.NewDirectory(path);
             }
+
+            return TaskResult.Successful;
         }
     }
 }

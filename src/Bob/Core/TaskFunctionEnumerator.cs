@@ -41,12 +41,17 @@ namespace Bob.Core
             get { return this.name; }
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
             foreach (ITask task in this.factory.Invoke())
             {
-                task.Execute();
+                if (task.Execute() == TaskResult.Unsuccessful)
+                {
+                    return TaskResult.Unsuccessful;
+                }
             }
+
+            return TaskResult.Successful;
         }
     }
 }

@@ -6,7 +6,7 @@ namespace Bob
 {
     public static class Program
     {
-        public static void Main(string[] args)
+        public static int Main(string[] args)
         {
             string script = File.ReadAllText(args[0]);
 
@@ -14,7 +14,9 @@ namespace Bob
             IBob bob = Runner.Compile(script);
 
             bob.Execute(pipeline);
-            pipeline.Execute("Default");
+            TaskResult result = pipeline.Execute("Default");
+
+            return result == TaskResult.Successful ? 0 : -1;
         }
     }
 }

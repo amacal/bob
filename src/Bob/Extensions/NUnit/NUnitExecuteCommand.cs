@@ -10,7 +10,8 @@ namespace Bob.Extensions.NUnit
             {
                 NUnitExecuteParameters instance = new NUnitExecuteParameters
                 {
-                    Path = Bob.NUnit.Path.Package()
+                    Path = Bob.NUnit.Path.Package(),
+                    Assemblies = Bob.FileSystem.Nothing()
                 };
 
                 parameters(instance);

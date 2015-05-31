@@ -17,6 +17,11 @@ namespace Bob
             get { return new FileSystemDirectoryRepository(); }
         }
 
+        public static IFileSystemItem Nothing()
+        {
+            return new FileSystemNothing();
+        }
+
         public static ITask Delete(Action<FileSystemDeleteParameters> parameters)
         {
             return FileSystemCommands.Delete().Execute(parameters);

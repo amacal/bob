@@ -92,6 +92,7 @@
     <Compile Include="Core\Task.cs" />
     <Compile Include="Core\TaskFunction.cs" />
     <Compile Include="Core\TaskFunctionEnumerator.cs" />
+    <Compile Include="Core\TaskResult.cs" />
     <Compile Include="Extensions\FileSystem\FileSystemCommands.cs" />
     <Compile Include="Extensions\FileSystem\FileSystemDeleteCommand.cs" />
     <Compile Include="Extensions\FileSystem\FileSystemDeleteParameters.cs" />
@@ -103,6 +104,7 @@
     <Compile Include="Extensions\FileSystem\FileSystemNewDirectoryCommand.cs" />
     <Compile Include="Extensions\FileSystem\FileSystemNewDirectoryParameters.cs" />
     <Compile Include="Extensions\FileSystem\FileSystemNewDirectoryTask.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemNothing.cs" />
     <Compile Include="Extensions\FileSystem\FileSystemRelative.cs" />
     <Compile Include="Extensions\ILRepack\ILRepack.cs" />
     <Compile Include="Extensions\ILRepack\ILRepackCommands.cs" />

@@ -18,12 +18,12 @@ namespace Bob.Extensions.MsBuild
             this.parameters = parameters;
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
-            this.Execute(this.parameters());
+            return this.Execute(this.parameters());
         }
 
-        private void Execute(MsBuildCompileParameters data)
+        private TaskResult Execute(MsBuildCompileParameters data)
         {
             string path = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions";
             ICollection<MsBuildVersion> versions = this.GetMsBuildVersions(path);
@@ -53,7 +53,12 @@ namespace Bob.Extensions.MsBuild
                 Arguments = arguments.ToString().TrimEnd()
             };
 
-            Container.Shell.Start(info);
+            if (Container.Shell.Start(info) != 0)
+            {
+                return TaskResult.Unsuccessful;
+            }
+
+            return TaskResult.Successful;
         }
 
         private ICollection<MsBuildVersion> GetMsBuildVersions(string path)

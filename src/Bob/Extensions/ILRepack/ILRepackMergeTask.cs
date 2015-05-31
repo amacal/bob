@@ -16,12 +16,12 @@ namespace Bob.Extensions.ILRepack
             this.parameters = parameters;
         }
 
-        public void Execute()
+        public TaskResult Execute()
         {
-            this.Execute(this.parameters());
+            return this.Execute(this.parameters());
         }
 
-        private void Execute(ILRepackMergeParameters data)
+        private TaskResult Execute(ILRepackMergeParameters data)
         {
             StringBuilder arguments = new StringBuilder();
             string tool = data.Path.Resolve();
@@ -52,7 +52,12 @@ namespace Bob.Extensions.ILRepack
                 Arguments = arguments.ToString().TrimEnd()
             };
 
-            Container.Shell.Start(info);
+            if (Container.Shell.Start(info) != 0)
+            {
+                return TaskResult.Unsuccessful;
+            }
+
+            return TaskResult.Successful;
         }
     }
 }

@@ -9,7 +9,7 @@ namespace Bob.Core
 
         static Pipeline()
         {
-            Pipeline.handlers = new List<Func<object,Task>>
+            Pipeline.handlers = new List<Func<object, Task>>
             {
                 TaskFunction.Create,
                 TaskFunctionEnumerator.Create
@@ -43,12 +43,17 @@ namespace Bob.Core
             this.definition.Add(instances.ToArray());
         }
 
-        public void Execute(string task)
+        public TaskResult Execute(string task)
         {
             foreach (Task item in this.definition[0])
             {
-                item.Execute();
+                if (item.Execute() == TaskResult.Unsuccessful)
+                {
+                    return TaskResult.Unsuccessful;
+                }
             }
+
+            return TaskResult.Successful;
         }
     }
 }

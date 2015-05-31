@@ -1,7 +1,9 @@
-﻿namespace Bob
+﻿using Bob.Core;
+
+namespace Bob
 {
     public interface ITask
     {
-        void Execute();
+        TaskResult Execute();
     }
 }
