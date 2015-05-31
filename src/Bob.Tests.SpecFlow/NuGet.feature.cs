@@ -189,6 +189,49 @@ namespace Bob.Tests.SpecFlow
 #line hidden
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("Installing NUnit.Runners package")]
+        public virtual void InstallingNUnit_RunnersPackage()
+        {
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Installing NUnit.Runners package", ((string[])(null)));
+#line 61
+    this.ScenarioSetup(scenarioInfo);
+#line 63
+     testRunner.Given("there is npgsql repository cloned into \"D:/Projects/npgsql\" directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 64
+        testRunner.And("\"D:/Projects/npgsql\" is the working directory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+            TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Code"});
+            table7.AddRow(new string[] {
+                        "NuGet.Install(parameters =>"});
+            table7.AddRow(new string[] {
+                        "{"});
+            table7.AddRow(new string[] {
+                        "parameters.Package = NuGet.Repository.Get(\"NUnit.Runners\");"});
+            table7.AddRow(new string[] {
+                        "})"});
+#line 65
+  testRunner.When("I execute the following task", ((string)(null)), table7, "When ");
+#line hidden
+            TechTalk.SpecFlow.Table table8 = new TechTalk.SpecFlow.Table(new string[] {
+                        "Parameter",
+                        "Value"});
+            table8.AddRow(new string[] {
+                        "Process",
+                        "D:\\Projects\npgsql\\.nuget\nuget.exe"});
+            table8.AddRow(new string[] {
+                        "WorkingDirectory",
+                        "D:\\Projects\npgsql"});
+            table8.AddRow(new string[] {
+                        "Arguments",
+                        "install NUnit.Runners -o D:\\Projects\npgsql\\packages"});
+#line 73
+  testRunner.Then("the following process is being executed", ((string)(null)), table8, "Then ");
+#line hidden
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
