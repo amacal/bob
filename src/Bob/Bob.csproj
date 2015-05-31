@@ -1,0 +1,161 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{63AAD0E8-0597-43F6-B3F8-1DA6D22AABC6}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bob</RootNamespace>
+    <AssemblyName>Bob</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeAnalysis.Common.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeAnalysis.CSharp.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.CSharp.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.CodeAnalysis.Common.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.Desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.Immutable, Version=1.1.33.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Collections.Immutable.1.1.33-beta\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Reflection.Metadata, Version=1.0.18.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\System.Reflection.Metadata.1.0.18-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\StorageExtensions.cs" />
+    <Compile Include="Core\StorageLocal.cs" />
+    <Compile Include="Core\StorageService.cs" />
+    <Compile Include="Core\Glob.cs" />
+    <Compile Include="Core\GlobDoubleStar.cs" />
+    <Compile Include="Core\GlobDrive.cs" />
+    <Compile Include="Core\GlobNetwork.cs" />
+    <Compile Include="Core\GlobParser.cs" />
+    <Compile Include="Core\GlobQuestionMark.cs" />
+    <Compile Include="Core\GlobSingleStar.cs" />
+    <Compile Include="Core\GlobLiteral.cs" />
+    <Compile Include="Core\GlobNode.cs" />
+    <Compile Include="Core\GlobSeparator.cs" />
+    <Compile Include="Core\GlobToRegexVisitor.cs" />
+    <Compile Include="Core\GlobVisitor.cs" />
+    <Compile Include="Core\Storage.cs" />
+    <Compile Include="Core\Network.cs" />
+    <Compile Include="Core\NetworkService.cs" />
+    <Compile Include="Core\Shell.cs" />
+    <Compile Include="Core\Registry.cs" />
+    <Compile Include="Core\Pipeline.cs" />
+    <Compile Include="Core\ShellService.cs" />
+    <Compile Include="Core\RegistryService.cs" />
+    <Compile Include="Core\StorageServiceLocal.cs" />
+    <Compile Include="Core\StorageServiceTemp.cs" />
+    <Compile Include="Core\StorageTemp.cs" />
+    <Compile Include="Core\Task.cs" />
+    <Compile Include="Core\TaskFunction.cs" />
+    <Compile Include="Core\TaskFunctionEnumerator.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemCommands.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemDeleteCommand.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemDeleteParameters.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemDeleteTask.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemDirectoryMatch.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemDirectoryRepository.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemFileRepository.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemFileMatch.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemNewDirectoryCommand.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemNewDirectoryParameters.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemNewDirectoryTask.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystemRelative.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepack.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepackCommands.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepackMergeCommand.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepackMergeParameters.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepackMergeTask.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepackPackagePath.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepackPath.cs" />
+    <Compile Include="Extensions\ILRepack\ILRepackRepository.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildCommands.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildCompileCommand.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildCompileParameters.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildCompileTask.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildVersion.cs" />
+    <Compile Include="Extensions\NuGet\NuGetCommands.cs" />
+    <Compile Include="Extensions\NuGet\NuGetDefaultPath.cs" />
+    <Compile Include="Extensions\NuGet\NuGetOnlinePath.cs" />
+    <Compile Include="Extensions\NuGet\NuGetRestoreCommand.cs" />
+    <Compile Include="Extensions\NuGet\NuGetRestoreParameters.cs" />
+    <Compile Include="Extensions\NuGet\NuGetRestoreTask.cs" />
+    <Compile Include="Extensions\NuGet\NuGetPath.cs" />
+    <Compile Include="Extensions\NuGet\NuGetPathRepository.cs" />
+    <Compile Include="Extensions\NUnit\NUnitCommands.cs" />
+    <Compile Include="Extensions\NUnit\NUnitExecuteCommand.cs" />
+    <Compile Include="Extensions\NUnit\NUnitExecuteParameters.cs" />
+    <Compile Include="Extensions\NUnit\NUnitExecuteTask.cs" />
+    <Compile Include="Extensions\NUnit\NUnitPackagePath.cs" />
+    <Compile Include="Extensions\NUnit\NUnitPath.cs" />
+    <Compile Include="Extensions\NUnit\NUnitPathRepository.cs" />
+    <Compile Include="IBob.cs" />
+    <Compile Include="Core\Container.cs" />
+    <Compile Include="Core\Runner.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Sample.cs" />
+    <Compile Include="Extensions\FileSystem\FileSystem.cs" />
+    <Compile Include="Extensions\IFileSystemItem.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuild.cs" />
+    <Compile Include="Extensions\NuGet\NuGet.cs" />
+    <Compile Include="Extensions\NUnit\NUnit.cs" />
+    <Compile Include="Extensions\PowerShell\PowerShell.cs" />
+    <Compile Include="IPipeline.cs" />
+    <Compile Include="ITask.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

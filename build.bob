@@ -1,0 +1,55 @@
+using System.Collections.Generic;
+
+using Bob;
+
+public class Sample : IBob
+{
+    private ITask Restore()
+    {
+        return NuGet.Restore(parameters =>
+        {
+            parameters.Path = NuGet.Path.Online();
+        });
+    }
+
+    private IEnumerable<ITask> Compile()
+    {
+        yield return FileSystem.Delete(parameters =>
+        {
+            parameters.Directories = FileSystem.Directories.Match("build\\output");
+        });
+
+        yield return MsBuild.Compile(parameters =>
+        {
+            parameters.Output = FileSystem.Directories.Relative("build\\output");
+        });
+    }
+
+    private ITask Test()
+    {
+        return NUnit.Execute(parameters =>
+        {
+            parameters.Assemblies = FileSystem.Files.Match("build\\output\\*.Tests*dll");
+        });
+    }
+
+    private IEnumerable<ITask> Merge()
+    {
+        yield return FileSystem.NewDirectory(parameters =>
+        {
+            parameters.Path = FileSystem.Directories.Relative("build\\merge");
+        });
+
+        yield return ILRepack.Merge(parameters =>
+        {
+            parameters.Output = FileSystem.Files.Relative("build\\merge\\bob.exe");
+            parameters.Primary = FileSystem.Files.Match("build\\output\\bob.exe");
+            parameters.Assemblies = FileSystem.Files.Match("build\\output\\*.dll");
+        });
+    }
+
+    public void Execute(IPipeline pipeline)
+    {
+        pipeline.Define(Restore, Compile, Test, Merge);
+    }
+}
