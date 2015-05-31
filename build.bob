@@ -25,9 +25,15 @@ public class Build : IBob
         });
     }
 
-    private ITask Test()
+    private IEnumerable<ITask> Test()
     {
-        return NUnit.Execute(parameters =>
+        yield return NuGet.Install(parameters =>
+        {
+            parameters.Path = NuGet.Path.Online();
+            parameters.Package = NuGet.Repository.Get("NUnit.Runners");
+        });
+
+        yield return NUnit.Execute(parameters =>
         {
             parameters.Assemblies = FileSystem.Files.Match("build\\output\\*.Tests*dll");
             parameters.XmlResult = FileSystem.Files.Relative("build\\nunit.xml");
@@ -39,6 +45,12 @@ public class Build : IBob
         yield return FileSystem.NewDirectory(parameters =>
         {
             parameters.Path = FileSystem.Directories.Relative("build\\merge");
+        });
+
+        yield return NuGet.Install(parameters =>
+        {
+            parameters.Path = NuGet.Path.Online();
+            parameters.Package = NuGet.Repository.Get("ilrepack");
         });
 
         yield return ILRepack.Merge(parameters =>

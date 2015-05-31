@@ -121,7 +121,12 @@
     <Compile Include="Extensions\MsBuild\MsBuildVersion.cs" />
     <Compile Include="Extensions\NuGet\NuGetCommands.cs" />
     <Compile Include="Extensions\NuGet\NuGetDefaultPath.cs" />
+    <Compile Include="Extensions\NuGet\NuGetInstallCommand.cs" />
+    <Compile Include="Extensions\NuGet\NuGetInstallParameters.cs" />
+    <Compile Include="Extensions\NuGet\NuGetInstallTask.cs" />
     <Compile Include="Extensions\NuGet\NuGetOnlinePath.cs" />
+    <Compile Include="Extensions\NuGet\NuGetPackage.cs" />
+    <Compile Include="Extensions\NuGet\NuGetPackageRepository.cs" />
     <Compile Include="Extensions\NuGet\NuGetRestoreCommand.cs" />
     <Compile Include="Extensions\NuGet\NuGetRestoreParameters.cs" />
     <Compile Include="Extensions\NuGet\NuGetRestoreTask.cs" />
