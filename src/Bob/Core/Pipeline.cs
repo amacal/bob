@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Bob.Core
 {
@@ -16,44 +17,68 @@ namespace Bob.Core
             };
         }
 
-        private readonly List<Task[]> definition;
+        private Task defaultTarget;
+        private readonly List<TaskChain> chains;
 
         public Pipeline()
         {
-            this.definition = new List<Task[]>();
+            this.chains = new List<TaskChain>();
+        }
+
+        public void Default(Func<object> task)
+        {
+            this.defaultTarget = this.GetTaskByHandler(task);
         }
 
         public void Define(params Func<object>[] tasks)
         {
-            List<Task> instances = new List<Task>();
+            TaskChain chain = new TaskChain();
 
-            foreach (object task in tasks)
+            foreach (Func<object> task in tasks)
             {
-                foreach (Func<object, Task> handler in Pipeline.handlers)
-                {
-                    Task instance = handler.Invoke(task);
+                Task instance = this.GetTaskByHandler(task);
 
-                    if (instance != null)
-                    {
-                        instances.Add(instance);
-                    }
+                if (instance != null)
+                {
+                    chain.Add(instance);
                 }
             }
 
-            this.definition.Add(instances.ToArray());
+            this.chains.Add(chain);
         }
 
-        public TaskResult Execute(string task)
+        private Task GetTaskByHandler(Func<object> task)
         {
-            foreach (Task item in this.definition[0])
+            foreach (Func<object, Task> handler in Pipeline.handlers)
             {
-                if (item.Execute() == TaskResult.Unsuccessful)
+                Task instance = handler.Invoke(task);
+
+                if (instance != null)
                 {
-                    return TaskResult.Unsuccessful;
+                    return instance;
                 }
             }
 
-            return TaskResult.Successful;
+            return null;
+        }
+
+        public TaskResult Execute()
+        {
+            if (this.defaultTarget != null)
+            {
+                return this.Execute(this.defaultTarget.Name);
+            }
+            else
+            {
+                return this.chains.Single().Execute();
+            }
+        }
+
+        public TaskResult Execute(string target)
+        {
+            TaskChain chain = this.chains.Single(x => x.Contains(target));
+
+            return chain.Execute(target);
         }
     }
 }

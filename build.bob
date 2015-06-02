@@ -83,8 +83,14 @@ public class Build : IBob
         });
     }
 
+    private IEnumerable<ITask> Default()
+    {
+        yield break;
+    }
+
     public void Execute(IPipeline pipeline)
     {
-        pipeline.Define(Restore, Compile, Test, Merge, Pack);
+        pipeline.Default(Default);
+        pipeline.Define(Restore, Compile, Test, Default, Merge, Pack);
     }
 }

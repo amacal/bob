@@ -92,6 +92,7 @@
     <Compile Include="Core\StorageServiceTemp.cs" />
     <Compile Include="Core\StorageTemp.cs" />
     <Compile Include="Core\Task.cs" />
+    <Compile Include="Core\TaskChain.cs" />
     <Compile Include="Core\TaskFunction.cs" />
     <Compile Include="Core\TaskFunctionEnumerator.cs" />
     <Compile Include="Core\TaskResult.cs" />
