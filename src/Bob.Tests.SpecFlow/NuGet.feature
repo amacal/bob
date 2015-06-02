@@ -77,26 +77,49 @@
 		| WorkingDirectory | D:\Projects\npgsql                                   |
 		| Arguments        | install NUnit.Runners -o D:\Projects\npgsql\packages |
 
-    Scenario: Creating npgsql package from scratch
+	Scenario: Creating npgsql package from template
 
     	Given there is npgsql repository cloned into "D:/Projects/npgsql" directory
         And "D:/Projects/npgsql" is the working directory
 		And "C:/Windows/Temp" is the temp directory
         When I execute the following task
 
-		| Code                                                             |
-		| NuGet.Pack(parameters =>                                         |
-		| {                                                                |
-		| parameters.Path = NuGet.Path.Online();                           |
-		| parameters.Specification = NuGet.Specification.Inline(package => |
-		| {                                                                |
-		| package.Id = "npgsql";                                           |
-		| package.Version = "2.2.6";                                       |
-		| package.Authors = "John Smith";                                  |
-		| package.Description = "";                                        |
-		| package.Files["src"] = FileSystem.Files.Match("*.sln");          |
-		| });                                                              |
-		| })                                                               |
+		| Code                                                                        |
+		| NuGet.Pack(parameters =>                                                    |
+		| {                                                                           |
+		| parameters.Path = NuGet.Path.Online();                                      |
+		| parameters.Specification = NuGet.Specification.Template("template.nuspec"); |
+		| })                                                                          |
+
+		Then the following process is being executed
+
+   		| Parameter        | Value                                   |
+   		| Process          | C:\Windows\Temp\nuget.exe               |
+   		| WorkingDirectory | D:\Projects\npgsql                      |
+   		| Arguments        | pack D:\Projects\npgsql\template.nuspec |
+
+    Scenario: Creating npgsql package from scratch
+
+    	Given there is npgsql repository cloned into "D:/Projects/npgsql" directory
+        And there is npgsql repository already restored in "D:/Projects/npgsql/packages" directory
+        And there is npgsql repository already compiled in "D:/Projects/npgsql/build/output" directory
+        And "D:/Projects/npgsql" is the working directory
+		And "C:/Windows/Temp" is the temp directory
+        When I execute the following task
+
+		| Code                                                                 |
+		| NuGet.Pack(parameters =>                                             |
+		| {                                                                    |
+		| parameters.Path = NuGet.Path.Online();                               |
+		| parameters.Specification = NuGet.Specification.Inline(package =>     |
+		| {                                                                    |
+		| package.Id = "npgsql";                                               |
+		| package.Version = "2.2.6";                                           |
+		| package.Authors = "John Smith";                                      |
+		| package.Description = "";                                            |
+		| package.Files["src"] = FileSystem.Files.Match("build/output/*.dll"); |
+		| });                                                                  |
+		| })                                                                   |
 
 		Then the following process is being executed
 

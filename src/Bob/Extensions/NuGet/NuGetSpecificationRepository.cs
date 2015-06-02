@@ -4,7 +4,7 @@ namespace Bob.Extensions.NuGet
 {
     public class NuGetSpecificationRepository
     {
-        public NuGetSpecification Find(string pattern)
+        public NuGetSpecification Template(string pattern)
         {
             return new NuGetMatchSpecification(pattern);
         }

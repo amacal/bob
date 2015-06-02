@@ -43,7 +43,8 @@ namespace Bob.Tests.Integration.Steps
                 new FileSystemDirectory("Npgsql"),
                 new FileSystemDirectory("NpgsqlDdexProvider"),
                 new FileSystemDirectory("Tools"),
-                new FileSystemDirectory("packages")
+                new FileSystemDirectory("packages"),
+                new FileSystemFile("template.nuspec")
             };
 
             this.core.Storage.Register(tree);
