@@ -18,6 +18,16 @@ namespace Bob.Core
             get { return this.path; }
         }
 
+        public string New(string extension)
+        {
+            string generated = System.IO.Path.GetTempFileName();
+            string renamed = System.IO.Path.ChangeExtension(generated, extension);
+
+            File.Move(generated, renamed);
+
+            return renamed;
+        }
+
         public IEnumerable<string> Files(Glob glob)
         {
             return Directory.EnumerateFiles(this.path, "*", SearchOption.AllDirectories).Select(this.Strip).Where(glob.IsMatch);

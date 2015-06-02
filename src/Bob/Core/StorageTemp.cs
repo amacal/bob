@@ -6,6 +6,8 @@ namespace Bob.Core
     {
         string Path { get; }
 
+        string New(string extension);
+
         IEnumerable<string> Files(Glob pattern);
 
         IEnumerable<string> Directories(Glob pattern);

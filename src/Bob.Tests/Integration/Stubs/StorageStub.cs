@@ -33,7 +33,11 @@ namespace Bob.Tests.Integration.Stubs
             this.trees.Add(new FileSystemTree(path));
         }
 
-        public void WriteFile(string path, byte[] data)
+        public void Write(string path, byte[] data)
+        {
+        }
+
+        public void Write(string path, string data)
         {
         }
 

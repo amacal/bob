@@ -29,9 +29,14 @@ namespace Bob.Core
             Directory.CreateDirectory(path);
         }
 
-        public void WriteFile(string path, byte[] data)
+        public void Write(string path, byte[] data)
         {
             File.WriteAllBytes(path, data);
+        }
+
+        public void Write(string path, string data)
+        {
+            File.WriteAllText(path, data);
         }
 
         public void DeleteFile(string path)

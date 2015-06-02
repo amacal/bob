@@ -61,6 +61,8 @@
       <HintPath>..\..\packages\System.Reflection.Metadata.1.0.18-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\StorageExtensions.cs" />
@@ -121,17 +123,26 @@
     <Compile Include="Extensions\MsBuild\MsBuildVersion.cs" />
     <Compile Include="Extensions\NuGet\NuGetCommands.cs" />
     <Compile Include="Extensions\NuGet\NuGetDefaultPath.cs" />
+    <Compile Include="Extensions\NuGet\NuGetInlineFilesCollection.cs" />
+    <Compile Include="Extensions\NuGet\NuGetInlineParameters.cs" />
+    <Compile Include="Extensions\NuGet\NuGetInlineSpecification.cs" />
     <Compile Include="Extensions\NuGet\NuGetInstallCommand.cs" />
     <Compile Include="Extensions\NuGet\NuGetInstallParameters.cs" />
     <Compile Include="Extensions\NuGet\NuGetInstallTask.cs" />
+    <Compile Include="Extensions\NuGet\NuGetMatchSpecification.cs" />
     <Compile Include="Extensions\NuGet\NuGetOnlinePath.cs" />
     <Compile Include="Extensions\NuGet\NuGetPackage.cs" />
     <Compile Include="Extensions\NuGet\NuGetPackageRepository.cs" />
+    <Compile Include="Extensions\NuGet\NuGetPackCommand.cs" />
+    <Compile Include="Extensions\NuGet\NuGetPackParameters.cs" />
+    <Compile Include="Extensions\NuGet\NuGetPackTask.cs" />
     <Compile Include="Extensions\NuGet\NuGetRestoreCommand.cs" />
     <Compile Include="Extensions\NuGet\NuGetRestoreParameters.cs" />
     <Compile Include="Extensions\NuGet\NuGetRestoreTask.cs" />
     <Compile Include="Extensions\NuGet\NuGetPath.cs" />
     <Compile Include="Extensions\NuGet\NuGetPathRepository.cs" />
+    <Compile Include="Extensions\NuGet\NuGetSpecification.cs" />
+    <Compile Include="Extensions\NuGet\NuGetSpecificationRepository.cs" />
     <Compile Include="Extensions\NUnit\NUnitCommands.cs" />
     <Compile Include="Extensions\NUnit\NUnitExecuteCommand.cs" />
     <Compile Include="Extensions\NUnit\NUnitExecuteParameters.cs" />

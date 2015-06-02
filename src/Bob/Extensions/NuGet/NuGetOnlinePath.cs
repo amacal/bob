@@ -11,7 +11,7 @@ namespace Bob.Extensions.NuGet
             byte[] data = Container.Network.Get("http://nuget.org/nuget.exe");
             string path = Path.Combine(Container.Storage.Temp.Path, "nuget.exe");
 
-            Container.Storage.WriteFile(path, data);
+            Container.Storage.Write(path, data);
 
             return path;
         }

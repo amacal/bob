@@ -10,7 +10,9 @@ namespace Bob.Core
 
         void NewDirectory(string path);
 
-        void WriteFile(string path, byte[] data);
+        void Write(string path, byte[] data);
+
+        void Write(string path, string data);
 
         void DeleteFile(string path);
 

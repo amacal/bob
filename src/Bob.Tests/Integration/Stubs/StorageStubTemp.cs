@@ -20,6 +20,11 @@ namespace Bob.Tests.Integration.Stubs
             get { return this.path; }
         }
 
+        public string New(string extension)
+        {
+            return System.IO.Path.Combine(this.path, System.IO.Path.ChangeExtension("file.tmp", extension));
+        }
+
         public IEnumerable<string> Files(Glob glob)
         {
             FileSystemFilesVisitor visitor = new FileSystemFilesVisitor(this.path, glob);

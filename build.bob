@@ -61,8 +61,30 @@ public class Build : IBob
         });
     }
 
+    private IEnumerable<ITask> Pack()
+    {
+        yield return FileSystem.NewDirectory(parameters =>
+        {
+            parameters.Path = FileSystem.Directories.Relative("build\\package");
+        });
+
+        yield return NuGet.Pack(parameters =>
+        {
+            parameters.Path = NuGet.Path.Online();
+            parameters.Output = FileSystem.Directories.Match("build\\package");
+            parameters.Specification = NuGet.Specification.Inline(package =>
+            {
+                package.Id = "Bob";
+                package.Version = "0.1.0-dev1";
+                package.Authors = "Adrian Macal";
+                package.Description = "C# based build automation system";
+                package.Files["tools"] = FileSystem.Files.Match("build\\merge\\bob.exe");
+            });
+        });
+    }
+
     public void Execute(IPipeline pipeline)
     {
-        pipeline.Define(Restore, Compile, Test, Merge);
+        pipeline.Define(Restore, Compile, Test, Merge, Pack);
     }
 }

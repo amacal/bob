@@ -32,6 +32,16 @@ namespace Bob
             });
         }
 
+        private ITask Pack()
+        {
+            return NuGet.Pack(parameters =>
+            {
+                parameters.Specification = NuGet.Specification.Inline(package =>
+                {
+                });
+            });
+        }
+
         private ITask Deploy()
         {
             return PowerShell.Execute(parameters =>

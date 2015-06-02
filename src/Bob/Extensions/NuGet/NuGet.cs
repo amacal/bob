@@ -16,9 +16,19 @@ namespace Bob
             get { return new NuGetPackageRepository(); }
         }
 
+        public static NuGetSpecificationRepository Specification
+        {
+            get { return new NuGetSpecificationRepository(); }
+        }
+
         public static ITask Install(Action<NuGetInstallParameters> parameters)
         {
             return NuGetCommands.Install().Execute(parameters);
+        }
+
+        public static ITask Pack(Action<NuGetPackParameters> parameters)
+        {
+            return NuGetCommands.Pack().Execute(parameters);
         }
 
         public static ITask Restore(Action<NuGetRestoreParameters> parameters)

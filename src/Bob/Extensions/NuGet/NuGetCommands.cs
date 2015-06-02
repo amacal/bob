@@ -7,6 +7,11 @@
             return new NuGetInstallCommand();
         }
 
+        public static NuGetPackCommand Pack()
+        {
+            return new NuGetPackCommand();
+        }
+
         public static NuGetRestoreCommand Restore()
         {
             return new NuGetRestoreCommand();

@@ -58,7 +58,7 @@
 		| WorkingDirectory | D:\Projects\npgsql        |
 		| Arguments        | restore                   |
 
-    Scenario: Installing NUnit.Runners package
+    Scenario: Installing NUnit.Runners package for npgsql
 
     	Given there is npgsql repository cloned into "D:/Projects/npgsql" directory
         And "D:/Projects/npgsql" is the working directory
@@ -76,3 +76,31 @@
 		| Process          | D:\Projects\npgsql\.nuget\nuget.exe                  |
 		| WorkingDirectory | D:\Projects\npgsql                                   |
 		| Arguments        | install NUnit.Runners -o D:\Projects\npgsql\packages |
+
+    Scenario: Creating npgsql package from scratch
+
+    	Given there is npgsql repository cloned into "D:/Projects/npgsql" directory
+        And "D:/Projects/npgsql" is the working directory
+		And "C:/Windows/Temp" is the temp directory
+        When I execute the following task
+
+		| Code                                                             |
+		| NuGet.Pack(parameters =>                                         |
+		| {                                                                |
+		| parameters.Path = NuGet.Path.Online();                           |
+		| parameters.Specification = NuGet.Specification.Inline(package => |
+		| {                                                                |
+		| package.Id = "npgsql";                                           |
+		| package.Version = "2.2.6";                                       |
+		| package.Authors = "John Smith";                                  |
+		| package.Description = "";                                        |
+		| package.Files["src"] = FileSystem.Files.Match("*.sln");          |
+		| });                                                              |
+		| })                                                               |
+
+		Then the following process is being executed
+
+   		| Parameter        | Value                            |
+   		| Process          | C:\Windows\Temp\nuget.exe        |
+   		| WorkingDirectory | D:\Projects\npgsql               |
+   		| Arguments        | pack C:\Windows\Temp\file.nuspec |
