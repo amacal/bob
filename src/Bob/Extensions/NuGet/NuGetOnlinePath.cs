@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 
 using Bob.Core;
 
@@ -6,12 +7,44 @@ namespace Bob.Extensions.NuGet
 {
     public class NuGetOnlinePath : NuGetPath
     {
+        private readonly Action<NuGetOnlineParameters> parameters;
+
+        public NuGetOnlinePath()
+        {
+        }
+
+        public NuGetOnlinePath(Action<NuGetOnlineParameters> parameters)
+        {
+            this.parameters = parameters;
+        }
+
         public string Resolve()
         {
-            byte[] data = Container.Network.Get("http://nuget.org/nuget.exe");
-            string path = Path.Combine(Container.Storage.Temp.Path, "nuget.exe");
+            NuGetOnlineParameters instance = new NuGetOnlineParameters
+            {
+                Cache = Bob.NuGet.Cache.Disable()
+            };
 
-            Container.Storage.Write(path, data);
+            if (this.parameters != null)
+            {
+                this.parameters(instance);
+            }
+
+            return this.Resolve(instance);
+        }
+
+        private string Resolve(NuGetOnlineParameters parameters)
+        {
+            string path = parameters.Cache.Resolve();
+
+            if (path == null)
+            {
+                byte[] data = Container.Network.Get("http://nuget.org/nuget.exe");
+                path = Path.Combine(Container.Storage.Temp.Path, "nuget.exe");
+
+                Container.Storage.Write(path, data);
+                parameters.Cache.Apply(path);
+            }
 
             return path;
         }

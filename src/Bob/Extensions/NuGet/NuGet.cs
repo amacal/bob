@@ -6,6 +6,11 @@ namespace Bob
 {
     public static class NuGet
     {
+        public static NuGetCacheFactory Cache
+        {
+            get { return new NuGetCacheFactory(); }
+        }
+
         public static NuGetPathRepository Path
         {
             get { return new NuGetPathRepository(); }

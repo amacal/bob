@@ -10,12 +10,14 @@ namespace Bob.Tests.Integration.Stubs
 
         private StorageStubLocal local;
         private StorageStubTemp temp;
+        private StorageStubData data;
 
         public StorageStub()
         {
             this.trees = new List<FileSystemTree>();
             this.local = new StorageStubLocal(@"c:\Users\Develop", this.trees);
             this.temp = new StorageStubTemp(@"c:\Users\Temp", this.trees);
+            this.data = new StorageStubData(@"c:\Users\Data", this.trees);
         }
 
         public IStorageLocal Local
@@ -26,6 +28,11 @@ namespace Bob.Tests.Integration.Stubs
         public IStorageTemp Temp
         {
             get { return this.temp; }
+        }
+
+        public IStorageData Data
+        {
+            get { return this.data; }
         }
 
         public void NewDirectory(string path)

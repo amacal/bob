@@ -65,6 +65,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\StorageData.cs" />
     <Compile Include="Core\StorageExtensions.cs" />
     <Compile Include="Core\StorageLocal.cs" />
     <Compile Include="Core\StorageService.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Core\Pipeline.cs" />
     <Compile Include="Core\ShellService.cs" />
     <Compile Include="Core\RegistryService.cs" />
+    <Compile Include="Core\StorageServiceData.cs" />
     <Compile Include="Core\StorageServiceLocal.cs" />
     <Compile Include="Core\StorageServiceTemp.cs" />
     <Compile Include="Core\StorageTemp.cs" />
@@ -122,6 +124,9 @@
     <Compile Include="Extensions\MsBuild\MsBuildCompileParameters.cs" />
     <Compile Include="Extensions\MsBuild\MsBuildCompileTask.cs" />
     <Compile Include="Extensions\MsBuild\MsBuildVersion.cs" />
+    <Compile Include="Extensions\NuGet\NuGetAppDataCache.cs" />
+    <Compile Include="Extensions\NuGet\NuGetCache.cs" />
+    <Compile Include="Extensions\NuGet\NuGetCacheFactory.cs" />
     <Compile Include="Extensions\NuGet\NuGetCommands.cs" />
     <Compile Include="Extensions\NuGet\NuGetDefaultPath.cs" />
     <Compile Include="Extensions\NuGet\NuGetInlineFilesCollection.cs" />
@@ -131,6 +136,8 @@
     <Compile Include="Extensions\NuGet\NuGetInstallParameters.cs" />
     <Compile Include="Extensions\NuGet\NuGetInstallTask.cs" />
     <Compile Include="Extensions\NuGet\NuGetMatchSpecification.cs" />
+    <Compile Include="Extensions\NuGet\NuGetDisableCache.cs" />
+    <Compile Include="Extensions\NuGet\NuGetOnlineParameters.cs" />
     <Compile Include="Extensions\NuGet\NuGetOnlinePath.cs" />
     <Compile Include="Extensions\NuGet\NuGetPackage.cs" />
     <Compile Include="Extensions\NuGet\NuGetPackageRepository.cs" />

@@ -8,6 +8,8 @@ namespace Bob.Core
 
         IStorageTemp Temp { get; }
 
+        IStorageData Data { get; }
+
         void NewDirectory(string path);
 
         void Write(string path, byte[] data);

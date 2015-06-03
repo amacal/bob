@@ -1,4 +1,6 @@
-﻿namespace Bob.Extensions.NuGet
+﻿using System;
+
+namespace Bob.Extensions.NuGet
 {
     public class NuGetPathRepository
     {
@@ -10,6 +12,11 @@
         public NuGetPath Online()
         {
             return new NuGetOnlinePath();
+        }
+
+        public NuGetPath Online(Action<NuGetOnlineParameters> parameters)
+        {
+            return new NuGetOnlinePath(parameters);
         }
     }
 }

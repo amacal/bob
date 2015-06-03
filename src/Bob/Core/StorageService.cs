@@ -7,11 +7,13 @@ namespace Bob.Core
     {
         private readonly IStorageLocal local;
         private readonly IStorageTemp temp;
+        private readonly IStorageData data;
 
         public StorageService()
         {
             this.local = new StorageServiceLocal(Environment.CurrentDirectory);
             this.temp = new StorageServiceTemp(Path.GetTempPath());
+            this.data = new StorageServiceData(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
         }
 
         public IStorageLocal Local
@@ -22,6 +24,11 @@ namespace Bob.Core
         public IStorageTemp Temp
         {
             get { return this.temp; }
+        }
+
+        public IStorageData Data
+        {
+            get { return this.data; }
         }
 
         public void NewDirectory(string path)

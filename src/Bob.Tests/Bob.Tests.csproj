@@ -68,6 +68,7 @@
     <Compile Include="Integration\Stubs\RegistryTree.cs" />
     <Compile Include="Integration\Stubs\RegistryValueVisitor.cs" />
     <Compile Include="Integration\Stubs\RegistryVisitor.cs" />
+    <Compile Include="Integration\Stubs\StorageStubData.cs" />
     <Compile Include="Integration\Stubs\StorageStubLocal.cs" />
     <Compile Include="Integration\Stubs\StorageStubTemp.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
