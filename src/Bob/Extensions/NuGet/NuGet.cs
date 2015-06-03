@@ -31,6 +31,11 @@ namespace Bob
             return NuGetCommands.Pack().Execute(parameters);
         }
 
+        public static ITask Restore()
+        {
+            return NuGetCommands.Restore().Execute();
+        }
+
         public static ITask Restore(Action<NuGetRestoreParameters> parameters)
         {
             return NuGetCommands.Restore().Execute(parameters);
