@@ -42,7 +42,7 @@ namespace Bob.Extensions.NuGet
                 byte[] data = Container.Network.Get("http://nuget.org/nuget.exe");
                 path = Path.Combine(Container.Storage.Temp.Path, "nuget.exe");
 
-                Container.Storage.Write(path, data);
+                Container.Storage.WriteBytes(path, data);
                 parameters.Cache.Apply(path);
             }
 

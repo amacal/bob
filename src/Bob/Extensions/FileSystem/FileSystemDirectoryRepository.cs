@@ -2,12 +2,12 @@
 {
     public class FileSystemDirectoryRepository
     {
-        public IFileSystemItem Relative(string path)
+        public FileSystemItem Relative(string path)
         {
             return new FileSystemRelative(path);
         }
 
-        public IFileSystemItem Match(string pattern)
+        public FileSystemItem Match(string pattern)
         {
             return new FileSystemDirectoryMatch(pattern);
         }

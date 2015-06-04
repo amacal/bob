@@ -4,7 +4,7 @@ using System.IO;
 
 namespace Bob.Extensions.FileSystem
 {
-    public class FileSystemRelative : IFileSystemItem
+    public class FileSystemRelative : FileSystemItem
     {
         private readonly string path;
 

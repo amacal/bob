@@ -164,7 +164,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Sample.cs" />
     <Compile Include="Extensions\FileSystem\FileSystem.cs" />
-    <Compile Include="Extensions\IFileSystemItem.cs" />
+    <Compile Include="Extensions\FileSystemItem.cs" />
     <Compile Include="Extensions\MsBuild\MsBuild.cs" />
     <Compile Include="Extensions\NuGet\NuGet.cs" />
     <Compile Include="Extensions\NUnit\NUnit.cs" />

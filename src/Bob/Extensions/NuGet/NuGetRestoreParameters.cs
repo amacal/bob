@@ -4,6 +4,6 @@
     {
         public NuGetPath Path { get; set; }
 
-        public IFileSystemItem Solution { get; set; }
+        public FileSystemItem Solution { get; set; }
     }
 }

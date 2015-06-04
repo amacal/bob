@@ -54,7 +54,7 @@ namespace Bob.Extensions.NuGet
                             new XElement(xmlns + "description", data.Description)),
                         files));
 
-            Container.Storage.Write(path, document.ToString());
+            Container.Storage.WriteText(path, document.ToString());
             return path;
         }
     }

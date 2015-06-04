@@ -7,7 +7,13 @@ namespace Bob
     {
         private ITask Restore()
         {
-            return NuGet.Restore(parameters => {});
+            return NuGet.Restore(parameters =>
+            {
+                parameters.Path = NuGet.Path.Online(settings =>
+                {
+                    settings.Cache = NuGet.Cache.AppData();
+                });
+            });
         }
 
         private IEnumerable<ITask> Compile()

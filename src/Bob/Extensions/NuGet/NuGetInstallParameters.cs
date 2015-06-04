@@ -4,7 +4,7 @@
     {
         public NuGetPath Path { get; set; }
 
-        public IFileSystemItem Output { get; set; }
+        public FileSystemItem Output { get; set; }
 
         public NuGetPackage Package { get; set; }
     }

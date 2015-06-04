@@ -4,10 +4,10 @@
     {
         public ILRepackPath Path { get; set; }
 
-        public IFileSystemItem Output { get; set; }
+        public FileSystemItem Output { get; set; }
 
-        public IFileSystemItem Primary { get; set; }
+        public FileSystemItem Primary { get; set; }
 
-        public IFileSystemItem Assemblies { get; set; }
+        public FileSystemItem Assemblies { get; set; }
     }
 }

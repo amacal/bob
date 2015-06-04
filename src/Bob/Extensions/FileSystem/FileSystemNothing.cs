@@ -2,7 +2,7 @@
 
 namespace Bob.Extensions.FileSystem
 {
-    public class FileSystemNothing : IFileSystemItem
+    public class FileSystemNothing : FileSystemItem
     {
         public IEnumerable<string> Execute()
         {

@@ -2,8 +2,8 @@
 {
     public class FileSystemDeleteParameters
     {
-        public IFileSystemItem Files { get; set; }
+        public FileSystemItem Files { get; set; }
 
-        public IFileSystemItem Directories { get; set; }
+        public FileSystemItem Directories { get; set; }
     }
 }

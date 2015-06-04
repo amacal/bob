@@ -2,6 +2,6 @@
 {
     public class FileSystemNewDirectoryParameters
     {
-        public IFileSystemItem Path { get; set; }
+        public FileSystemItem Path { get; set; }
     }
 }

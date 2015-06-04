@@ -4,8 +4,8 @@
     {
         public NUnitPath Path { get; set; }
 
-        public IFileSystemItem Assemblies { get; set; }
+        public FileSystemItem Assemblies { get; set; }
 
-        public IFileSystemItem XmlResult { get; set; }
+        public FileSystemItem XmlResult { get; set; }
     }
 }

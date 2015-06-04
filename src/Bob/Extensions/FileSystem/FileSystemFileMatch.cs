@@ -4,7 +4,7 @@ using Bob.Core;
 
 namespace Bob.Extensions.FileSystem
 {
-    public class FileSystemFileMatch : IFileSystemItem
+    public class FileSystemFileMatch : FileSystemItem
     {
         private readonly Glob glob;
 

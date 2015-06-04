@@ -2,7 +2,7 @@
 
 namespace Bob.Extensions
 {
-    public interface IFileSystemItem
+    public interface FileSystemItem
     {
         IEnumerable<string> Execute();
     }

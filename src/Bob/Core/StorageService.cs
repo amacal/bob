@@ -13,7 +13,7 @@ namespace Bob.Core
         {
             this.local = new StorageServiceLocal(Environment.CurrentDirectory);
             this.temp = new StorageServiceTemp(Path.GetTempPath());
-            this.data = new StorageServiceData(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData));
+            this.data = new StorageServiceData(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "adma", "bob"));
         }
 
         public IStorageLocal Local
@@ -36,14 +36,33 @@ namespace Bob.Core
             Directory.CreateDirectory(path);
         }
 
-        public void Write(string path, byte[] data)
+        public void WriteBytes(string path, byte[] data)
         {
+            string directory = Path.GetDirectoryName(path);
+
+            if (Directory.Exists(directory) == false)
+            {
+                Directory.CreateDirectory(directory);
+            }
+
             File.WriteAllBytes(path, data);
         }
 
-        public void Write(string path, string data)
+        public void WriteText(string path, string data)
         {
+            string directory = Path.GetDirectoryName(path);
+
+            if (Directory.Exists(directory) == false)
+            {
+                Directory.CreateDirectory(directory);
+            }
+
             File.WriteAllText(path, data);
+        }
+
+        public byte[] ReadBytes(string path)
+        {
+            return File.ReadAllBytes(path);
         }
 
         public void DeleteFile(string path)

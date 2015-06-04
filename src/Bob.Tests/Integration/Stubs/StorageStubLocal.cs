@@ -20,9 +20,9 @@ namespace Bob.Tests.Integration.Stubs
             get { return this.path; }
         }
 
-        public IEnumerable<string> Files(Glob glob)
+        public IEnumerable<string> Files(Glob pattern)
         {
-            FileSystemFilesVisitor visitor = new FileSystemFilesVisitor(this.path, glob);
+            FileSystemFilesVisitor visitor = new FileSystemFilesVisitor(this.path, pattern);
 
             foreach (FileSystemTree tree in this.trees)
             {

@@ -19,5 +19,17 @@ namespace Bob.Tests.Integration.Stubs
         {
             get { return this.path; }
         }
+
+        public IEnumerable<string> Files(Glob pattern)
+        {
+            FileSystemFilesVisitor visitor = new FileSystemFilesVisitor(this.path, pattern);
+
+            foreach (FileSystemTree tree in this.trees)
+            {
+                tree.Accept(visitor);
+            }
+
+            return visitor.GetFiles();
+        }
     }
 }

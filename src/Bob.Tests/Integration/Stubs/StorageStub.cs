@@ -40,12 +40,17 @@ namespace Bob.Tests.Integration.Stubs
             this.trees.Add(new FileSystemTree(path));
         }
 
-        public void Write(string path, byte[] data)
+        public void WriteBytes(string path, byte[] data)
         {
         }
 
-        public void Write(string path, string data)
+        public void WriteText(string path, string data)
         {
+        }
+
+        public byte[] ReadBytes(string path)
+        {
+            return new byte[0];
         }
 
         public void SetWorkingDirectory(string path)

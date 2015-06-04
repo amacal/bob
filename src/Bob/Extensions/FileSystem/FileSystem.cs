@@ -17,7 +17,7 @@ namespace Bob
             get { return new FileSystemDirectoryRepository(); }
         }
 
-        public static IFileSystemItem Nothing()
+        public static FileSystemItem Nothing()
         {
             return new FileSystemNothing();
         }

@@ -8,7 +8,10 @@ public class Build : IBob
     {
         return NuGet.Restore(parameters =>
         {
-            parameters.Path = NuGet.Path.Online();
+            parameters.Path = NuGet.Path.Online(settings =>
+            {
+                settings.Cache = NuGet.Cache.AppData();
+            });
         });
     }
 
@@ -29,8 +32,11 @@ public class Build : IBob
     {
         yield return NuGet.Install(parameters =>
         {
-            parameters.Path = NuGet.Path.Online();
             parameters.Package = NuGet.Repository.Get("NUnit.Runners");
+            parameters.Path = NuGet.Path.Online(settings =>
+            {
+                settings.Cache = NuGet.Cache.AppData();
+            });
         });
 
         yield return NUnit.Execute(parameters =>
@@ -49,8 +55,11 @@ public class Build : IBob
 
         yield return NuGet.Install(parameters =>
         {
-            parameters.Path = NuGet.Path.Online();
             parameters.Package = NuGet.Repository.Get("ilrepack");
+            parameters.Path = NuGet.Path.Online(settings =>
+            {
+                settings.Cache = NuGet.Cache.AppData();
+            });
         });
 
         yield return ILRepack.Merge(parameters =>
@@ -70,8 +79,11 @@ public class Build : IBob
 
         yield return NuGet.Pack(parameters =>
         {
-            parameters.Path = NuGet.Path.Online();
             parameters.Output = FileSystem.Directories.Match("build\\package");
+            parameters.Path = NuGet.Path.Online(settings =>
+            {
+                settings.Cache = NuGet.Cache.AppData();
+            });
             parameters.Specification = NuGet.Specification.Inline(package =>
             {
                 package.Id = "Bob";

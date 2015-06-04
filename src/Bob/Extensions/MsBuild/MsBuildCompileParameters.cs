@@ -2,8 +2,8 @@
 {
     public class MsBuildCompileParameters
     {
-        public IFileSystemItem Solution { get; set; }
+        public FileSystemItem Solution { get; set; }
 
-        public IFileSystemItem Output { get; set; }
+        public FileSystemItem Output { get; set; }
     }
 }
