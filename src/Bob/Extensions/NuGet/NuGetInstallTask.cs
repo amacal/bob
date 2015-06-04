@@ -28,7 +28,7 @@ namespace Bob.Extensions.NuGet
 
             if (data.Package != null)
             {
-                arguments.Append(data.Package.Name);
+                arguments.Append(data.Package.Id);
                 arguments.Append(" ");
             }
 

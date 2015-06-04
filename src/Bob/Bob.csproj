@@ -129,6 +129,7 @@
     <Compile Include="Extensions\NuGet\NuGetCacheFactory.cs" />
     <Compile Include="Extensions\NuGet\NuGetCommands.cs" />
     <Compile Include="Extensions\NuGet\NuGetDefaultPath.cs" />
+    <Compile Include="Extensions\NuGet\NuGetInlineDependenciesCollection.cs" />
     <Compile Include="Extensions\NuGet\NuGetInlineFilesCollection.cs" />
     <Compile Include="Extensions\NuGet\NuGetInlineParameters.cs" />
     <Compile Include="Extensions\NuGet\NuGetInlineSpecification.cs" />

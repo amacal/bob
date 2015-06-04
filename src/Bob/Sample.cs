@@ -44,6 +44,7 @@ namespace Bob
             {
                 parameters.Specification = NuGet.Specification.Inline(package =>
                 {
+                    package.Dependencies.Add("NUnit", "2.6.4");
                 });
             });
         }

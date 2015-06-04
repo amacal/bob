@@ -1,7 +1,8 @@
-﻿using Bob.Core;
-using System;
+﻿using System;
 using System.Text;
 using System.Xml.Linq;
+
+using Bob.Core;
 
 namespace Bob.Extensions.NuGet
 {
@@ -18,6 +19,7 @@ namespace Bob.Extensions.NuGet
         {
             NuGetInlineParameters instance = new NuGetInlineParameters
             {
+                Dependencies = new NuGetInlineDependenciesCollection(),
                 Files = new NuGetInlineFilesCollection()
             };
 
@@ -31,6 +33,7 @@ namespace Bob.Extensions.NuGet
             string path = Container.Storage.Temp.New(".nuspec");
 
             XElement files = new XElement(xmlns + "files");
+            XElement dependencies = new XElement(xmlns + "dependencies");
 
             foreach (string target in data.Files.Targets)
             {
@@ -43,6 +46,14 @@ namespace Bob.Extensions.NuGet
                 }
             }
 
+            foreach (NuGetPackage package in data.Dependencies.Packages)
+            {
+                dependencies.Add(
+                    new XElement(xmlns + "dependency",
+                        new XAttribute("id", package.Id),
+                        new XAttribute("version", package.Version)));
+            }
+
             XDocument document =
                 new XDocument(
                     new XDeclaration("1.0", Encoding.UTF8.BodyName, "yes"),
@@ -51,7 +62,8 @@ namespace Bob.Extensions.NuGet
                             new XElement(xmlns + "id", data.Id),
                             new XElement(xmlns + "version", data.Version),
                             new XElement(xmlns + "authors", data.Authors),
-                            new XElement(xmlns + "description", data.Description)),
+                            new XElement(xmlns + "description", data.Description),
+                            dependencies),
                         files));
 
             Container.Storage.WriteText(path, document.ToString());

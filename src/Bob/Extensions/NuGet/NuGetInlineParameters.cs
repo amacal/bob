@@ -10,6 +10,8 @@
 
         public string Description { get; set; }
 
+        public NuGetInlineDependenciesCollection Dependencies { get; set; }
+
         public NuGetInlineFilesCollection Files { get; set; }
     }
 }

@@ -2,16 +2,28 @@
 {
     public class NuGetPackage
     {
-        private readonly string name;
+        private readonly string id;
+        private readonly string version;
 
-        public NuGetPackage(string name)
+        public NuGetPackage(string id)
         {
-            this.name = name;
+            this.id = id;
         }
 
-        public string Name
+        public NuGetPackage(string id, string version)
         {
-            get { return this.name; }
+            this.id = id;
+            this.version = version;
+        }
+        
+        public string Id
+        {
+            get { return this.id; }
+        }
+
+        public string Version
+        {
+            get { return this.version; }
         }
     }
 }
