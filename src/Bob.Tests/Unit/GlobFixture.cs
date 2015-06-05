@@ -59,6 +59,23 @@ namespace Bob.Tests.Unit
                         @"properties\assembly.cs"
                     }
                 };
+
+                yield return new ScenarioItem
+                {
+                    Glob = Glob.Parse("program.*"),
+                    Input = new[]
+                    {
+                        @"program.cs",
+                        @"program.txt",
+                        @"properties\assembly.cs",
+                        @"properties\assembly.info"
+                    },
+                    Output = new[]
+                    {
+                        @"program.cs",
+                        @"program.txt"
+                    }
+                };
             }
         }
     }

@@ -7,9 +7,9 @@
             return new FileSystemRelative(path);
         }
 
-        public FileSystemItem Match(string pattern)
+        public FileSystemItem Match(params string[] patterns)
         {
-            return new FileSystemFileMatch(pattern);
+            return new FileSystemFileMatch(patterns);
         }
     }
 }

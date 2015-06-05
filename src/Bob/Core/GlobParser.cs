@@ -120,7 +120,9 @@ namespace Bob.Core
                     }
                     else
                     {
+                        this.nodes.Add(new GlobSingleStar());
                         this.position++;
+
                         return true;
                     }
                 }

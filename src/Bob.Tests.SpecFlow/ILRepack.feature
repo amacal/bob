@@ -23,5 +23,5 @@
 
 		| Parameter        | Value                                                                                                                                                                                                |
 		| Process          | D:\Projects\bob\packages\ilrepack.1.26.0\tools\ilrepack.exe                                                                                                                                          |
-		| WorkingDirectory | D:\Projects\bob                                                                                                                                                                                   |
-		| Arguments        | /out:D:\Projects\bob\build\merge\bob.exe D:\Projects\bob\build\output\Bob.exe D:\Projects\bob\build\output\Microsoft.CodeAnalysis.dll D:\Projects\bob\build\output\Microsoft.CodeAnalysis.CSharp.dll |
+		| WorkingDirectory | D:\Projects\bob                                                                                                                                                                                      |
+		| Arguments        | /out:D:\Projects\bob\build\merge\bob.exe D:\Projects\bob\build\output\Bob.exe D:\Projects\bob\build\output\Microsoft.CodeAnalysis.CSharp.dll D:\Projects\bob\build\output\Microsoft.CodeAnalysis.dll |

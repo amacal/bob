@@ -4,6 +4,14 @@ using Bob;
 
 public class Build : IBob
 {
+    private ITask Clean()
+    {
+        return FileSystem.Delete(parameters =>
+        {
+            parameters.Directories = FileSystem.Directories.Match("build");
+        });
+    }
+
     private ITask Restore()
     {
         return NuGet.Restore(parameters =>
@@ -17,11 +25,6 @@ public class Build : IBob
 
     private IEnumerable<ITask> Compile()
     {
-        yield return FileSystem.Delete(parameters =>
-        {
-            parameters.Directories = FileSystem.Directories.Match("build\\output");
-        });
-
         yield return MsBuild.Compile(parameters =>
         {
             parameters.Output = FileSystem.Directories.Relative("build\\output");
@@ -66,7 +69,7 @@ public class Build : IBob
         {
             parameters.Output = FileSystem.Files.Relative("build\\merge\\bob.exe");
             parameters.Primary = FileSystem.Files.Match("build\\output\\bob.exe");
-            parameters.Assemblies = FileSystem.Files.Match("build\\output\\*.dll");
+            parameters.Assemblies = FileSystem.Files.Match("build\\output\\Microsoft.CodeAnalysis*.dll", "build\\output\\System.*.dll");
         });
     }
 
@@ -86,11 +89,11 @@ public class Build : IBob
             });
             parameters.Specification = NuGet.Specification.Inline(package =>
             {
-                package.Id = "Bob";
-                package.Version = "0.1.0-dev1";
+                package.Id = "bob-make";
+                package.Version = "0.1.0-dev2";
                 package.Authors = "Adrian Macal";
                 package.Description = "C# based build automation system";
-                package.Files["tools"] = FileSystem.Files.Match("build\\merge\\bob.exe");
+                package.Files["tools"] = FileSystem.Files.Match("build\\merge\\*");
             });
         });
     }
@@ -103,6 +106,6 @@ public class Build : IBob
     public void Execute(IPipeline pipeline)
     {
         pipeline.Default(Default);
-        pipeline.Define(Restore, Compile, Test, Default, Merge, Pack);
+        pipeline.Define(Clean, Restore, Compile, Test, Default, Merge, Pack);
     }
 }

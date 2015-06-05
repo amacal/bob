@@ -111,8 +111,8 @@ namespace Bob.Tests.SpecFlow
             table2.AddRow(new string[] {
                         "Arguments",
                         "/out:D:\\Projects\\bob\\build\\merge\\bob.exe D:\\Projects\\bob\\build\\output\\Bob.exe D:\\" +
-                            "Projects\\bob\\build\\output\\Microsoft.CodeAnalysis.dll D:\\Projects\\bob\\build\\outpu" +
-                            "t\\Microsoft.CodeAnalysis.CSharp.dll"});
+                            "Projects\\bob\\build\\output\\Microsoft.CodeAnalysis.CSharp.dll D:\\Projects\\bob\\buil" +
+                            "d\\output\\Microsoft.CodeAnalysis.dll"});
 #line 22
   testRunner.Then("the following process is being executed", ((string)(null)), table2, "Then ");
 #line hidden

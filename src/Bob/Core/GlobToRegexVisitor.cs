@@ -33,12 +33,12 @@ namespace Bob.Core
 
         public void Visit(GlobSingleStar singleStar)
         {
-            this.builder.Append(@"[^/\\:]+");
+            this.builder.Append(@"[^/\\:]*");
         }
 
         public void Visit(GlobDoubleStar doubleStar)
         {
-            this.builder.Append(@"[^\?]+");
+            this.builder.Append(@"[^\?]*");
         }
 
         public void Visit(GlobSeparator separator)

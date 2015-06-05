@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 using Bob.Core;
 
@@ -6,16 +7,26 @@ namespace Bob.Extensions.FileSystem
 {
     public class FileSystemFileMatch : FileSystemItem
     {
-        private readonly Glob glob;
+        private readonly Glob[] globs;
 
-        public FileSystemFileMatch(string pattern)
+        public FileSystemFileMatch(string[] patterns)
         {
-            this.glob = Glob.Parse(pattern);
+            this.globs = patterns.Select(Glob.Parse).ToArray();
         }
 
         public IEnumerable<string> Execute()
         {
-            return Container.Storage.Local.Files(this.glob);
+            HashSet<string> results = new HashSet<string>();
+
+            foreach (Glob glob in this.globs)
+            {
+                foreach (string result in Container.Storage.Local.Files(glob))
+                {
+                    results.Add(result);
+                }
+            }
+
+            return results.OrderBy(x => x);
         }
     }
 }
