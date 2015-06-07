@@ -27,6 +27,8 @@ namespace Bob
             {
                 parameters.Solution = FileSystem.Files.Match("*.sln");
                 parameters.Output = FileSystem.Directories.Relative("build\\output");
+
+                parameters.Properties.Add(MsBuild.Properties.Configuration.Release());
             });
         }
 

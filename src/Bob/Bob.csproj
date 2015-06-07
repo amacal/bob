@@ -123,6 +123,10 @@
     <Compile Include="Extensions\MsBuild\MsBuildCompileCommand.cs" />
     <Compile Include="Extensions\MsBuild\MsBuildCompileParameters.cs" />
     <Compile Include="Extensions\MsBuild\MsBuildCompileTask.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildProperty.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildPropertyCollection.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildPropertyRepository.cs" />
+    <Compile Include="Extensions\MsBuild\MsBuildPropertyRepositoryForConfiguration.cs" />
     <Compile Include="Extensions\MsBuild\MsBuildVersion.cs" />
     <Compile Include="Extensions\NuGet\NuGetAppDataCache.cs" />
     <Compile Include="Extensions\NuGet\NuGetCache.cs" />

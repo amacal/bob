@@ -46,6 +46,12 @@ namespace Bob.Extensions.MsBuild
                 arguments.Append(" ");
             }
 
+            foreach (MsBuildProperty property in data.Properties.Items)
+            {
+                arguments.AppendFormat("/p:{0}={1}", property.Name, property.Value);
+                arguments.Append(" ");
+            }
+
             ProcessStartInfo info = new ProcessStartInfo
             {
                 FileName = tool,

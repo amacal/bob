@@ -5,5 +5,7 @@
         public FileSystemItem Solution { get; set; }
 
         public FileSystemItem Output { get; set; }
+
+        public MsBuildPropertyCollection Properties { get; set; }
     }
 }

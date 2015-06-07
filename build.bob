@@ -28,6 +28,7 @@ public class Build : IBob
         yield return MsBuild.Compile(parameters =>
         {
             parameters.Output = FileSystem.Directories.Relative("build\\output");
+            parameters.Properties.Add(MsBuild.Properties.Configuration.Release());
         });
     }
 
@@ -90,7 +91,7 @@ public class Build : IBob
             parameters.Specification = NuGet.Specification.Inline(package =>
             {
                 package.Id = "bob-make";
-                package.Version = "0.1.0-dev3";
+                package.Version = "0.1.0-dev4";
                 package.Authors = "Adrian Macal";
                 package.Description = "C# based build automation system";
                 package.Files["tools"] = FileSystem.Files.Match("build\\merge\\*");
