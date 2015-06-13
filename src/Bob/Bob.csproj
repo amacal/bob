@@ -132,6 +132,10 @@
     <Compile Include="Extensions\NuGet\NuGetCache.cs" />
     <Compile Include="Extensions\NuGet\NuGetCacheFactory.cs" />
     <Compile Include="Extensions\NuGet\NuGetCommands.cs" />
+    <Compile Include="Extensions\NuGet\NuGetConfiguration.cs" />
+    <Compile Include="Extensions\NuGet\NuGetConfigureCommand.cs" />
+    <Compile Include="Extensions\NuGet\NuGetConfigureParameters.cs" />
+    <Compile Include="Extensions\NuGet\NuGetConfigureTask.cs" />
     <Compile Include="Extensions\NuGet\NuGetDefaultPath.cs" />
     <Compile Include="Extensions\NuGet\NuGetInlineDependenciesCollection.cs" />
     <Compile Include="Extensions\NuGet\NuGetInlineFilesCollection.cs" />

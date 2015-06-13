@@ -4,6 +4,17 @@ using Bob;
 
 public class Build : IBob
 {
+    private ITask Configure()
+    {
+        return NuGet.Configure(parameters =>
+        {
+            parameters.Path = NuGet.Path.Online(settings =>
+            {
+                settings.Cache = NuGet.Cache.AppData();
+            });
+        });
+    }
+
     private ITask Clean()
     {
         return FileSystem.Delete(parameters =>
@@ -14,13 +25,7 @@ public class Build : IBob
 
     private ITask Restore()
     {
-        return NuGet.Restore(parameters =>
-        {
-            parameters.Path = NuGet.Path.Online(settings =>
-            {
-                settings.Cache = NuGet.Cache.AppData();
-            });
-        });
+        return NuGet.Restore();
     }
 
     private IEnumerable<ITask> Compile()
@@ -37,10 +42,6 @@ public class Build : IBob
         yield return NuGet.Install(parameters =>
         {
             parameters.Package = NuGet.Repository.Get("NUnit.Runners");
-            parameters.Path = NuGet.Path.Online(settings =>
-            {
-                settings.Cache = NuGet.Cache.AppData();
-            });
         });
 
         yield return NUnit.Execute(parameters =>
@@ -60,10 +61,6 @@ public class Build : IBob
         yield return NuGet.Install(parameters =>
         {
             parameters.Package = NuGet.Repository.Get("ilrepack");
-            parameters.Path = NuGet.Path.Online(settings =>
-            {
-                settings.Cache = NuGet.Cache.AppData();
-            });
         });
 
         yield return ILRepack.Merge(parameters =>
@@ -84,10 +81,6 @@ public class Build : IBob
         yield return NuGet.Pack(parameters =>
         {
             parameters.Output = FileSystem.Directories.Match("build\\package");
-            parameters.Path = NuGet.Path.Online(settings =>
-            {
-                settings.Cache = NuGet.Cache.AppData();
-            });
             parameters.Specification = NuGet.Specification.Inline(package =>
             {
                 package.Id = "bob-make";
@@ -107,6 +100,6 @@ public class Build : IBob
     public void Execute(IPipeline pipeline)
     {
         pipeline.Default(Default);
-        pipeline.Define(Clean, Restore, Compile, Test, Default, Merge, Pack);
+        pipeline.Define(Configure, Clean, Restore, Compile, Test, Default, Merge, Pack);
     }
 }

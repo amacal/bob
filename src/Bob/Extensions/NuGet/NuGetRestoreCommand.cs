@@ -10,7 +10,7 @@ namespace Bob.Extensions.NuGet
             {
                 NuGetRestoreParameters instance = new NuGetRestoreParameters
                 {
-                    Path = Bob.NuGet.Path.Default()
+                    Path = NuGetConfiguration.Instance.Path
                 };
 
                 return instance;
@@ -23,7 +23,7 @@ namespace Bob.Extensions.NuGet
             {
                 NuGetRestoreParameters instance = new NuGetRestoreParameters
                 {
-                    Path = Bob.NuGet.Path.Default()
+                    Path = NuGetConfiguration.Instance.Path
                 };
 
                 parameters(instance);

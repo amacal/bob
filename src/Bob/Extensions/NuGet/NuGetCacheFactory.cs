@@ -2,6 +2,11 @@
 {
     public class NuGetCacheFactory
     {
+        public NuGetCache Default()
+        {
+            return new NuGetDisableCache();
+        }
+
         public NuGetCache Disable()
         {
             return new NuGetDisableCache();

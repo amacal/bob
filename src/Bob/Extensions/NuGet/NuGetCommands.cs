@@ -2,6 +2,11 @@
 {
     public static class NuGetCommands
     {
+        public static NuGetConfigureCommand Configure()
+        {
+            return new NuGetConfigureCommand();
+        }
+
         public static NuGetInstallCommand Install()
         {
             return new NuGetInstallCommand();

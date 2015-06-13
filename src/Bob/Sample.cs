@@ -5,15 +5,20 @@ namespace Bob
 {
     public class Sample : IBob
     {
-        private ITask Restore()
+        private ITask Configure()
         {
-            return NuGet.Restore(parameters =>
+            return NuGet.Configure(parameters =>
             {
                 parameters.Path = NuGet.Path.Online(settings =>
                 {
                     settings.Cache = NuGet.Cache.AppData();
                 });
             });
+        }
+
+        private ITask Restore()
+        {
+            return NuGet.Restore();
         }
 
         private IEnumerable<ITask> Compile()
@@ -61,7 +66,7 @@ namespace Bob
 
         public void Execute(IPipeline pipeline)
         {
-            pipeline.Define(Restore, Compile, Test, Deploy);
+            pipeline.Define(Configure, Restore, Compile, Test, Deploy);
         }
     }
 }

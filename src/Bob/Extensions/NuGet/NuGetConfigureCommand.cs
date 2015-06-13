@@ -1,13 +1,14 @@
 ﻿using System;
+
 namespace Bob.Extensions.NuGet
 {
-    public class NuGetPackCommand
+    public class NuGetConfigureCommand
     {
-        public ITask Execute(Action<NuGetPackParameters> parameters)
+        public ITask Execute(Action<NuGetConfigureParameters> parameters)
         {
-            return new NuGetPackTask(() =>
+            return new NuGetConfigureTask(() =>
             {
-                NuGetPackParameters instance = new NuGetPackParameters
+                NuGetConfigureParameters instance = new NuGetConfigureParameters
                 {
                     Path = NuGetConfiguration.Instance.Path
                 };

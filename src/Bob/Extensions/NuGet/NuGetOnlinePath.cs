@@ -22,7 +22,7 @@ namespace Bob.Extensions.NuGet
         {
             NuGetOnlineParameters instance = new NuGetOnlineParameters
             {
-                Cache = Bob.NuGet.Cache.Disable()
+                Cache = Bob.NuGet.Cache.Default()
             };
 
             if (this.parameters != null)

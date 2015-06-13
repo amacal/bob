@@ -10,7 +10,7 @@ namespace Bob.Extensions.NuGet
             {
                 NuGetInstallParameters instance = new NuGetInstallParameters
                 {
-                    Path = Bob.NuGet.Path.Default(),
+                    Path = NuGetConfiguration.Instance.Path,
                     Output = Bob.FileSystem.Directories.Relative("packages")
                 };
 
