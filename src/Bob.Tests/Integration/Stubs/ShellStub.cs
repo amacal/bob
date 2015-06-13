@@ -22,9 +22,9 @@ namespace Bob.Tests.Integration.Stubs
             return 0;
         }
 
-        public bool Any(Func<ProcessStartInfo, bool> predicate)
+        public ShellMatch Match(Func<ProcessStartInfo, ShellMatch> predicate)
         {
-            return this.executed.Any(predicate);
+            return this.executed.Select(predicate).FirstOrDefault(x => x != ShellMatch.OK) ?? ShellMatch.OK;
         }
     }
 }

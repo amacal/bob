@@ -54,6 +54,7 @@
     <Compile Include="Integration\Stubs\FileSystemFile.cs" />
     <Compile Include="Integration\Stubs\FileSystemFilesVisitor.cs" />
     <Compile Include="Integration\Stubs\FileSystemNode.cs" />
+    <Compile Include="Integration\Stubs\ShellMatch.cs" />
     <Compile Include="Integration\Stubs\StorageStub.cs" />
     <Compile Include="Integration\Stubs\FileSystemTree.cs" />
     <Compile Include="Integration\Stubs\FileSystemVisitor.cs" />

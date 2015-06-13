@@ -22,7 +22,7 @@ namespace Bob.Tests.Integration.Steps
         [Then(@"the following process is being executed")]
         public void ThenTheFollowingProcessIsBeingExecuted(Table table)
         {
-            Func<ProcessStartInfo, bool> predicate = info =>
+            Func<ProcessStartInfo, ShellMatch> predicate = info =>
             {
                 foreach (TableRow row in table.Rows)
                 {
@@ -32,7 +32,7 @@ namespace Bob.Tests.Integration.Steps
 
                             if (String.Equals(info.FileName, row["Value"].Escape(), StringComparison.OrdinalIgnoreCase) == false)
                             {
-                                return false;
+                                return new ShellMatch(String.Format("filename: '{0}' <> '{1}'", info.FileName, row["Value"].Escape()));
                             }
 
                             break;
@@ -41,7 +41,7 @@ namespace Bob.Tests.Integration.Steps
 
                             if (String.Equals(info.WorkingDirectory, row["Value"].Escape(), StringComparison.OrdinalIgnoreCase) == false)
                             {
-                                return false;
+                                return new ShellMatch(String.Format("working-directory: '{0}' <> '{1}'", info.WorkingDirectory, row["Value"].Escape()));
                             }
 
                             break;
@@ -50,17 +50,17 @@ namespace Bob.Tests.Integration.Steps
 
                             if (info.Arguments != row["Value"].Escape())
                             {
-                                return false;
+                                return new ShellMatch(String.Format("arguments: '{0}' <> '{1}'", info.Arguments, row["Value"].Escape()));
                             }
 
                             break;
                     }
                 }
 
-                return true;
+                return ShellMatch.OK;
             };
 
-            Assert.That(this.core.Shell.Any(predicate), Is.True);
+            Assert.That(this.core.Shell.Match(predicate), Is.EqualTo(ShellMatch.OK));
         }
     }
 
