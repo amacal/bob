@@ -6,4 +6,4 @@ install:
 script:
   - xbuild /p:Configuration=Debug /p:OutDir=/home/travis/build/amacal/bob-make/build/output/ Bob.2013.Community.sln
   - mono ./build/NUnit.Runners.2.6.4/tools/nunit-console.exe ./build/output/Bob.Tests.dll
-  - mono ./build/NUnit.Runners.2.6.4/tools/nunit-console.exe ./build/output/Bob.Tests.Specflow.dll
+  - mono ./build/NUnit.Runners.2.6.4/tools/nunit-console.exe ./build/output/Bob.Tests.SpecFlow.dll
