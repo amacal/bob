@@ -4,6 +4,6 @@ install:
   - nuget restore Bob.2013.Community.sln
   - nuget install NUnit.Runners -Version 2.6.4 -OutputDirectory build
 script:
-  - xbuild /p:Configuration=Debug /p:OutDir=./build/output/ Bob.2013.Community.sln
+  - xbuild /p:Configuration=Debug /p:OutDir=/home/travis/build/amacal/bob-make/build/output/ Bob.2013.Community.sln
   - mono ./build/NUnit.Runners.2.6.4/tools/nunit-console.exe ./build/output/Bob.Tests.dll
   - mono ./build/NUnit.Runners.2.6.4/tools/nunit-console.exe ./build/output/Bob.Tests.Specflow.dll
