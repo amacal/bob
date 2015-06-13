@@ -11,7 +11,7 @@ namespace Bob.Core
         public static IBob Compile(string text)
         {
             CSharpCompilation compilation =
-                CSharpCompilation.Create("Test")
+                CSharpCompilation.Create(Path.GetRandomFileName())
                     .AddSyntaxTrees(CSharpSyntaxTree.ParseText(text))
                     .AddReferences(MetadataReference.CreateFromAssembly(Assembly.GetAssembly(typeof(Console)), MetadataReferenceProperties.Assembly))
                     .AddReferences(MetadataReference.CreateFromAssembly(typeof(Runner).Assembly))
