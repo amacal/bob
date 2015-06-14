@@ -9,7 +9,7 @@ namespace Bob.Extensions.MsBuild
             return new MsBuildCompileTask(() =>
             {
                 MsBuildCompileParameters instance = new MsBuildCompileParameters
-                {                   
+                {
                     Properties = new MsBuildPropertyCollection()
                 };
 

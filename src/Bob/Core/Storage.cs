@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace Bob.Core
+﻿namespace Bob.Core
 {
     public interface IStorage
     {

@@ -1,7 +1,4 @@
-﻿using System;
-using System.IO;
-
-using TechTalk.SpecFlow;
+﻿using TechTalk.SpecFlow;
 
 namespace Bob.Tests.Integration.Steps
 {

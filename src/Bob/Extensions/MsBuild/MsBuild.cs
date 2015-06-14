@@ -1,6 +1,5 @@
-﻿using System;
-
-using Bob.Extensions.MsBuild;
+﻿using Bob.Extensions.MsBuild;
+using System;
 
 namespace Bob
 {

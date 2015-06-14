@@ -1,7 +1,6 @@
-﻿using System;
-
-using Bob.Extensions;
+﻿using Bob.Extensions;
 using Bob.Extensions.FileSystem;
+using System;
 
 namespace Bob
 {

@@ -1,6 +1,5 @@
-﻿using System.Collections.Generic;
-
-using Bob.Core;
+﻿using Bob.Core;
+using System.Collections.Generic;
 
 namespace Bob.Extensions.FileSystem
 {

@@ -1,6 +1,5 @@
-﻿using System;
-
-using Bob.Extensions.ILRepack;
+﻿using Bob.Extensions.ILRepack;
+using System;
 
 namespace Bob
 {

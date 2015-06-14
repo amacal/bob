@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace Bob.Extensions.NuGet
 {
     public class NuGetPackCommand

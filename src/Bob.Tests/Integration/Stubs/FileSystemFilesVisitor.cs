@@ -1,8 +1,7 @@
-﻿using System;
+﻿using Bob.Core;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-
-using Bob.Core;
 
 namespace Bob.Tests.Integration.Stubs
 {

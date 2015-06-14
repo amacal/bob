@@ -45,7 +45,7 @@ namespace Bob.Core
 
         private bool ParseRoot()
         {
-            return this.ParseDrive() 
+            return this.ParseDrive()
                 || this.ParseNetwork();
         }
 

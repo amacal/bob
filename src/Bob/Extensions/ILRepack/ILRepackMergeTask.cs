@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Bob.Core;
+using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-
-using Bob.Core;
 
 namespace Bob.Extensions.ILRepack
 {

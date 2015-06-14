@@ -1,6 +1,5 @@
-﻿using System.IO;
-
-using Bob.Core;
+﻿using Bob.Core;
+using System.IO;
 
 namespace Bob
 {

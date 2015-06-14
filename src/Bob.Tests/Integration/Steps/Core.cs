@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
-using System.Linq;
-
-using NUnit.Framework;
-using TechTalk.SpecFlow;
-
-using Bob.Core;
+﻿using Bob.Core;
 using Bob.Tests.Integration.Stubs;
 
 namespace Bob.Tests.Integration.Steps
@@ -30,7 +21,7 @@ namespace Bob.Tests.Integration.Steps
             Container.Registry = this.registry;
             Container.Storage = this.storage;
             Container.Network = this.network;
-        }        
+        }
 
         public ShellStub Shell
         {

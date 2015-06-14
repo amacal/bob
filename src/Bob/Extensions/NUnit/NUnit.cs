@@ -1,6 +1,5 @@
-﻿using System;
-
-using Bob.Extensions.NUnit;
+﻿using Bob.Extensions.NUnit;
+using System;
 
 namespace Bob
 {

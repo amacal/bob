@@ -1,11 +1,10 @@
-﻿using System;
+﻿using Bob.Core;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-
-using Bob.Core;
 
 namespace Bob.Extensions.MsBuild
 {
@@ -27,7 +26,7 @@ namespace Bob.Extensions.MsBuild
         {
             string path = @"HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions";
             ICollection<MsBuildVersion> versions = this.GetMsBuildVersions(path);
-            
+
             MsBuildVersion version = versions.OrderByDescending(x => x.Major).ThenByDescending(x => x.Minor).First();
             path = path + "\\" + version.ToString() + "\\MSBuildToolsPath";
 
@@ -70,7 +69,7 @@ namespace Bob.Extensions.MsBuild
         private ICollection<MsBuildVersion> GetMsBuildVersions(string path)
         {
             ICollection<MsBuildVersion> versions = new List<MsBuildVersion>();
-            string[] keys = Container.Registry.Keys(path);           
+            string[] keys = Container.Registry.Keys(path);
 
             foreach (string key in keys)
             {

@@ -1,7 +1,6 @@
-﻿using System.IO;
+﻿using Bob.Core;
+using System.IO;
 using System.Linq;
-
-using Bob.Core;
 
 namespace Bob.Extensions.NuGet
 {
