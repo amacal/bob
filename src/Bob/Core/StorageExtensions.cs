@@ -7,6 +7,11 @@
             return path.Replace('/', '\\');
         }
 
+        public static string Unslash(this string path)
+        {
+            return path.TrimEnd('/', '\\');
+        }
+
         public static string Quote(this string path)
         {
             if (path.Contains(" ") == false)

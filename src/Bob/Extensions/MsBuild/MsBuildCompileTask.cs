@@ -30,7 +30,7 @@ namespace Bob.Extensions.MsBuild
             MsBuildVersion version = versions.OrderByDescending(x => x.Major).ThenByDescending(x => x.Minor).First();
             path = path + "\\" + version.ToString() + "\\MSBuildToolsPath";
 
-            string tool = Path.Combine(Container.Registry.Value(path), "msbuild.exe");
+            string tool = Path.Combine(Container.Registry.Value(path).Unslash(), "msbuild.exe");
             StringBuilder arguments = new StringBuilder();
 
             if (data.Solution != null)
