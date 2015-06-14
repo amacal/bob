@@ -1,11 +1,8 @@
-﻿using System;
-using System.Diagnostics;
-using System.IO;
-
+﻿using Bob.Tests.Integration.Stubs;
 using NUnit.Framework;
+using System;
+using System.Diagnostics;
 using TechTalk.SpecFlow;
-
-using Bob.Tests.Integration.Stubs;
 
 namespace Bob.Tests.Integration.Steps
 {
@@ -30,7 +27,7 @@ namespace Bob.Tests.Integration.Steps
                     {
                         case "Process":
 
-                            if (String.Equals(info.FileName, row["Value"].Escape(), StringComparison.OrdinalIgnoreCase) == false)
+                            if (Equals(info.FileName, row["Value"].Escape()) == false)
                             {
                                 return new ShellMatch(String.Format("filename: '{0}' <> '{1}'", info.FileName, row["Value"].Escape()));
                             }
@@ -39,7 +36,7 @@ namespace Bob.Tests.Integration.Steps
 
                         case "WorkingDirectory":
 
-                            if (String.Equals(info.WorkingDirectory, row["Value"].Escape(), StringComparison.OrdinalIgnoreCase) == false)
+                            if (Equals(info.WorkingDirectory, row["Value"].Escape()) == false)
                             {
                                 return new ShellMatch(String.Format("working-directory: '{0}' <> '{1}'", info.WorkingDirectory, row["Value"].Escape()));
                             }
@@ -48,7 +45,7 @@ namespace Bob.Tests.Integration.Steps
 
                         case "Arguments":
 
-                            if (info.Arguments != row["Value"].Escape())
+                            if (Equals(info.Arguments, row["Value"].Escape()) == false)
                             {
                                 return new ShellMatch(String.Format("arguments: '{0}' <> '{1}'", info.Arguments, row["Value"].Escape()));
                             }
@@ -61,6 +58,31 @@ namespace Bob.Tests.Integration.Steps
             };
 
             Assert.That(this.core.Shell.Match(predicate), Is.EqualTo(ShellMatch.OK));
+        }
+
+        private static bool Equals(string left, string right)
+        {
+            if (left.Length != right.Length)
+            {
+                return false;
+            }
+
+            for (int i = 0; i < left.Length; i++)
+            {
+                if (Char.ToLower(left[i]) == Char.ToLower(right[i]))
+                {
+                    continue;
+                }
+
+                if ((left[i] == '\\' || left[i] == '/') && (right[i] == '\\' || right[i] == '/'))
+                {
+                    continue;
+                }
+
+                return false;
+            }
+
+            return true;
         }
     }
 
